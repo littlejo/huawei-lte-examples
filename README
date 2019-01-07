@@ -21,3 +21,5 @@ Modify password value and ip value of the router 4G in login.py
 ## Launch
 
 python3 display_traffic_signal.py
+
+![display traffic signal command output](https://raw.githubusercontent.com/littlejo/huawei-lte-examples/master/huawei-lte-monitoring/demo.gif)
