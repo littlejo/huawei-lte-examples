@@ -6,7 +6,7 @@
 
 # INSTALLATION
 
-## Installation of dependancies
+## Installation of dependencies
 
 ```sh
 git clone git@github.com:littlejo/huawei-lte-examples.git
@@ -22,7 +22,7 @@ pip3 install -r requirements.txt
 
 ## Configuration
 
-Modify password value and ip value of the router 4G in login.py
+Modify password value and ip value of the 4G router in login.py
 
 ## Launch
 
