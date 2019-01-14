@@ -1,0 +1,99 @@
+ScreenManagement:
+    LoginPage:
+    UserPage:
+
+<LoginPage>:
+    name: "login_page"
+    BoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            id: ip
+            hint_text: '4G router ip address, default ip: 192.168.1.1'
+            font_size: 20
+        TextInput:
+            id: passw
+            hint_text: 'password'
+            password: True # hide password
+            font_size: 20
+        Button:
+            text: "go"
+            on_release: root.verify_credentials()
+            size: (200, 100)
+            font_size: 50
+
+<UserPage>:
+    name: "user"
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                Label:
+                    text: 'UL'
+                Label:
+                    text: 'DL'
+                Label:
+                    text: 'Band'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b1_ul
+                CheckBox:
+                    id: b1
+                Label:
+                    text: 'B1: FDD 2100 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b2_ul
+                CheckBox:
+                    id: b2
+                Label:
+                    text: 'B2: FDD 1900 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b3_ul
+                CheckBox:
+                    id: b3
+                Label:
+                    text: 'B3: FDD 1800 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b4_ul
+                CheckBox:
+                    id: b4
+                Label:
+                    text: 'B4: FDD 1700 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b5_ul
+                CheckBox:
+                    id: b5
+                Label:
+                    text: 'B5: FDD 850 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b6_ul
+                CheckBox:
+                    id: b6
+                Label:
+                    text: 'B6: FDD 800 Mhz'
+            BoxLayout:
+                CheckBox:
+                    group: 'ul'
+                    id: b7_ul
+                CheckBox:
+                    id: b7
+                Label:
+                    text: 'B7: FDD 2600 Mhz'
+        BoxLayout:
+            Button:
+                text: "back"
+                on_release: app.root.current = "login_page"
+            Button:
+                text: "OK"
+                on_release: root.configure_router()
