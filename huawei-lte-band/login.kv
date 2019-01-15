@@ -9,16 +9,18 @@ ScreenManagement:
         TextInput:
             id: ip
             hint_text: '4G router ip address, default ip: 192.168.1.1'
+            size_hint: 1, .1
             font_size: 20
         TextInput:
             id: passw
             hint_text: 'password'
             password: True # hide password
+            size_hint: 1, .1
             font_size: 20
         Button:
             text: "go"
             on_release: root.verify_credentials()
-            size: (200, 100)
+            size_hint: 1, .3
             font_size: 50
 
 <UserPage>:
@@ -26,6 +28,8 @@ ScreenManagement:
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
+            post_hint: {'x': 0, 'top': 1}
+            size_hint: 1, 10
             orientation: 'vertical'
             BoxLayout:
                 Label:

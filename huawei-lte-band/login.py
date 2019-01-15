@@ -11,6 +11,7 @@ from huawei_lte_api.exceptions import LoginErrorUsernamePasswordWrongException
 
 login = 'admin'
 default_ip = '192.168.1.1'
+test_design = True
 
 class LoginPage(Screen):
     def verify_credentials(self):
@@ -24,9 +25,10 @@ class LoginPage(Screen):
             ip = default_ip
 
         try:
-            connection = AuthorizedConnection(f'http://{ip}/', login, password)
-            client = Client(connection)
-            client.user.logout()
+            if not test_design:
+                connection = AuthorizedConnection(f'http://{ip}/', login, password)
+                client = Client(connection)
+                client.user.logout()
             self.manager.current = "user"
         except LoginErrorUsernamePasswordWrongException:
             pass
