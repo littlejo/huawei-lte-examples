@@ -33,7 +33,7 @@ bands_list = [
 ]
 
 
-def convert_list2hex(bands_list):
+def convert_bands_list2hex(bands_list):
     res_int = 0
     for band in bands_list:
         power = int(band.replace('b', '')) - 1
@@ -64,8 +64,8 @@ class BandPage(Screen):
     def configure_router(self):
         down_bands = self.get_bands()
         up_bands = self.get_bands('_ul')
-        print(convert_list2hex(down_bands))
-        print(convert_list2hex(up_bands))
+        print(convert_bands_list2hex(down_bands))
+        print(convert_bands_list2hex(up_bands))
 
     def get_bands(self, postfix_str=''):
         res_bands_list = []
