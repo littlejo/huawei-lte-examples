@@ -32,19 +32,6 @@ bands_list = [
     'b41',
 ]
 
-def get_upload_bands(ids):
-    res_bands_list = []
-    for band in bands_list:
-        if ids[band + '_ul'].active:
-            res_bands_list.append(band)
-    return res_bands_list
-
-def get_download_bands(ids):
-    res_bands_list = []
-    for band in bands_list:
-        if ids[band].active:
-            res_bands_list.append(band)
-    return res_bands_list
 
 def convert_list2hex(bands_list):
     res_int = 0
@@ -73,12 +60,19 @@ class LoginPage(Screen):
         except LoginErrorUsernamePasswordWrongException:
             pass
 
-class UserPage(Screen):
+class BandPage(Screen):
     def configure_router(self):
-        down_bands = get_download_bands(self.ids)
-        up_bands = get_upload_bands(self.ids)
+        down_bands = self.get_bands()
+        up_bands = self.get_bands('_ul')
         print(convert_list2hex(down_bands))
         print(convert_list2hex(up_bands))
+
+    def get_bands(self, postfix_str=''):
+        res_bands_list = []
+        for band in bands_list:
+            if self.ids[band + postfix_str].active:
+                res_bands_list.append(band)
+        return res_bands_list
 
 class ScreenManagement(ScreenManager):
     pass
