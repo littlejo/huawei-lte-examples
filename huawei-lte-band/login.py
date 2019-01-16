@@ -4,13 +4,9 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 
-from huawei_lte_api.Client import Client
-from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
-from huawei_lte_api.exceptions import ResponseErrorLoginCsfrException
-from huawei_lte_api.exceptions import LoginErrorUsernamePasswordWrongException
-
 from math_bands import *
 from default_value import *
+from huawei_lte_lib import *
 
 class LoginPage(Screen):
     def verify_credentials(self):
@@ -23,14 +19,11 @@ class LoginPage(Screen):
         if ip == '':
             ip = default_ip
 
-        try:
-            if not test_design:
-                connection = AuthorizedConnection(f'http://{ip}/', login, password)
-                client = Client(connection)
-                client.user.logout()
+        if test_design or check_connection(ip, login, password):
+            print("Good password")
             self.manager.current = "user"
-        except LoginErrorUsernamePasswordWrongException:
-            pass
+        else:
+            print("Bad password")
 
 class BandPage(Screen):
     def configure_router(self):
