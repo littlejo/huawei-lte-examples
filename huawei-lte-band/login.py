@@ -77,11 +77,12 @@ class BandPage(Screen):
 class ScreenManagement(ScreenManager):
     pass
 
-kv_file = Builder.load_file('login.kv')
 
 class LoginApp(App):
+    band_color_1 = [0.1, 0.1 , 0.1 , 0.1]
+    band_color_2 = [0.2, 0.2, 0.5, 0.2]
     def builder(self):
-        return kv_file
+        return Builder.load_file('login.kv')
 
 if __name__ == '__main__':
     LoginApp().run()
