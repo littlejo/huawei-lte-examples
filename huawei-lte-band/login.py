@@ -19,7 +19,9 @@ class LoginPage(Screen):
         if ip == '':
             ip = default_ip
 
-        if test_design or check_connection(ip, login, password):
+        huawei_lte.set_login(ip, login, password)
+
+        if test_design or huawei_lte.check_connection():
             print("Good password")
             self.manager.current = "user"
         else:
@@ -35,6 +37,10 @@ class BandPage(Screen):
         up_list = convert_bands_hex2list(up_bands_hex)
         print('Download: %s %s' %(down_bands_hex, str(down_list)))
         print('Upload: %s %s' %(up_bands_hex, str(up_list)))
+        current_bands_hex = huawei_lte.get_bands_number()
+        current_bands_list = convert_bands_hex2list(current_bands_hex)
+        print(current_bands_list)
+        print(huawei_lte.net_mode)
 
     def get_bands(self, postfix_str=''):
         res_bands_list = []
@@ -54,4 +60,5 @@ class LoginApp(App):
         return Builder.load_file('login.kv')
 
 if __name__ == '__main__':
+    huawei_lte = HuaweiLte()
     LoginApp().run()
