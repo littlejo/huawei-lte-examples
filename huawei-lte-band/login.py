@@ -9,36 +9,8 @@ from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
 from huawei_lte_api.exceptions import ResponseErrorLoginCsfrException
 from huawei_lte_api.exceptions import LoginErrorUsernamePasswordWrongException
 
-login = 'admin'
-default_ip = '192.168.1.1'
-test_design = True
-
-bands_list = [
-    'b1',
-    'b2',
-    'b3',
-    'b4',
-    'b5',
-    'b6',
-    'b7',
-    'b8',
-    'b19',
-    'b20',
-    'b26',
-    'b28',
-    'b32',
-    'b38',
-    'b40',
-    'b41',
-]
-
-
-def convert_bands_list2hex(bands_list):
-    res_int = 0
-    for band in bands_list:
-        power = int(band.replace('b', '')) - 1
-        res_int += 2 ** power
-    return str(hex(res_int)).replace('0x', '')
+from math_bands import *
+from default_value import *
 
 class LoginPage(Screen):
     def verify_credentials(self):
@@ -64,8 +36,12 @@ class BandPage(Screen):
     def configure_router(self):
         down_bands = self.get_bands()
         up_bands = self.get_bands('_ul')
-        print(convert_bands_list2hex(down_bands))
-        print(convert_bands_list2hex(up_bands))
+        down_bands_hex = convert_bands_list2hex(down_bands)
+        up_bands_hex = convert_bands_list2hex(up_bands)
+        down_list = convert_bands_hex2list(down_bands_hex)
+        up_list = convert_bands_hex2list(up_bands_hex)
+        print('Download: %s %s' %(down_bands_hex, str(down_list)))
+        print('Upload: %s %s' %(up_bands_hex, str(up_list)))
 
     def get_bands(self, postfix_str=''):
         res_bands_list = []
