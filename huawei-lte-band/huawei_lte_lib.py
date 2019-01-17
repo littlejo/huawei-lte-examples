@@ -42,8 +42,9 @@ class HuaweiLte:
     def set_bands_number(self, number):
         try:
             self.init_connection()
+            self.init_net_mode()
             self.lte_band = number
-            self.net_mode = self.client.net.set_net_mode(self.lte_band, self.network_band, self.network_mode)
+            self.client.net.set_net_mode(self.lte_band, self.network_band, self.network_mode)
             self.close_connection()
         except LoginErrorUsernamePasswordWrongException:
             return False
