@@ -31,16 +31,21 @@ class BandPage(Screen):
     def configure_router(self):
         down_bands = self.get_bands()
         up_bands = self.get_bands('_ul')
-        down_bands_hex = convert_bands_list2hex(down_bands)
-        up_bands_hex = convert_bands_list2hex(up_bands)
-        down_list = convert_bands_hex2list(down_bands_hex)
-        up_list = convert_bands_hex2list(up_bands_hex)
-        print('Download: %s %s' %(down_bands_hex, str(down_list)))
-        print('Upload: %s %s' %(up_bands_hex, str(up_list)))
+        self.down_bands_hex = convert_bands_list2hex(down_bands)
+        self.up_bands_hex = convert_bands_list2hex(up_bands)
+        self.set_bands()
+
+    def get_bands(self):
         current_bands_hex = huawei_lte.get_bands_number()
         current_bands_list = convert_bands_hex2list(current_bands_hex)
-        print(current_bands_list)
-        print(huawei_lte.net_mode)
+        print(f'Download :  {current_bands_list} {current_bands_hex}')
+
+    def set_bands(self):
+        print(f'Set upload band: {self.up_bands_hex}')
+        huawei_lte.set_bands_number(self.up_bands_hex)
+        print(f'Set download band: {self.down_bands_hex}')
+        huawei_lte.set_bands_number(self.down_bands_hex)
+        self.get_bands()
 
     def get_bands(self, postfix_str=''):
         res_bands_list = []
