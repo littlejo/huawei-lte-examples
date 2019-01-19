@@ -24,6 +24,7 @@ class LoginPage(Screen):
         if test_design or huawei_lte.check_connection():
             print("Good password")
             self.manager.current = "user"
+            print(huawei_lte.get_all_monitor_information())
         else:
             print("Bad password")
 
