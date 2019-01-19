@@ -62,6 +62,7 @@ class ScreenManagement(ScreenManager):
 class LoginApp(App):
     band_color_1 = [0.1, 0.1, 0.1, 0.1]
     band_color_2 = [0.2, 0.2, 0.5, 0.2]
+    bands_dict = bands_ui_dict
     def builder(self):
         return Builder.load_file('login.kv')
 

@@ -19,6 +19,7 @@ meaning_bands_list = [
 
 bands_list = [band for band, meaning in meaning_bands_list]
 meaning_bands_dict = {band: meaning for band, meaning in meaning_bands_list}
+bands_ui_dict = {band: f'{band.upper()}: {meaning_bands_dict[band]}' for band in bands_list}
 
 hex_band_list = [hex(2 ** (int(band.replace('b', '')) - 1)) for band in bands_list][::-1]
 
