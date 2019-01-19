@@ -1,21 +1,24 @@
-bands_list = [
-    'b1',
-    'b2',
-    'b3',
-    'b4',
-    'b5',
-    'b6',
-    'b7',
-    'b8',
-    'b19',
-    'b20',
-    'b26',
-    'b28',
-    'b32',
-    'b38',
-    'b40',
-    'b41',
+meaning_bands_list = [
+    ('b1', 'FDD 2100 Mhz'),
+    ('b2', 'FDD 1900 Mhz'),
+    ('b3', 'FDD 1800 Mhz'),
+    ('b4', 'FDD 1700 Mhz'),
+    ('b5', 'FDD 850 Mhz'),
+    ('b6', 'FDD 800 Mhz'),
+    ('b7', 'FDD 2600 Mhz'),
+    ('b8', 'FDD 900 Mhz'),
+    ('b19', 'FDD 850 Mhz'),
+    ('b20', 'FDD 800 Mhz'),
+    ('b26', 'FDD 850 Mhz'),
+    ('b28', 'FDD 700 Mhz'),
+    ('b32', 'FDD 1500 Mhz'),
+    ('b38', 'TDD 2600 Mhz'),
+    ('b40', 'TDD 2300 Mhz'),
+    ('b41', 'TDD 2500 Mhz'),
 ]
+
+bands_list = [band for band, meaning in meaning_bands_list]
+meaning_bands_dict = {band: meaning for band, meaning in meaning_bands_list}
 
 hex_band_list = [hex(2 ** (int(band.replace('b', '')) - 1)) for band in bands_list][::-1]
 
