@@ -1,3 +1,38 @@
+#:import C kivy.utils.get_color_from_hex
+
+<CustomInput@TextInput>:
+    font_size: '14dp'
+    background_color: 0,0,0,0
+    cursor_color: C('#ffffff')
+    canvas.before:
+        Color:
+            rgba: C('#ffffff')
+    canvas.after:
+        Color:
+            rgb: C('#0f192e')
+        Ellipse:
+            angle_start:180
+            angle_end:360
+            pos:(self.pos[0] - self.size[1]/2.0, self.pos[1])
+            size: (self.size[1], self.size[1])
+        Ellipse:
+            angle_start:360
+            angle_end:540
+            pos: (self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1])
+            size: (self.size[1], self.size[1])
+        Color:
+            rgba: C('#3f92db')
+        Line:
+            points: self.pos[0] , self.pos[1], self.pos[0] + self.size[0], self.pos[1]
+        Line:
+            points: self.pos[0], self.pos[1] + self.size[1], self.pos[0] + self.size[0], self.pos[1] + self.size[1]
+        Line:
+            ellipse: self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 180, 360
+        Line:
+            ellipse: self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 360, 540
+
+
+
 LoginPage:
     name: "login_page"
     BoxLayout:
@@ -11,51 +46,78 @@ LoginPage:
             markup: True
         BoxLayout:
             size_hint: 1, .1
+            padding: [0, 0, 0, 6]
             orientation: 'horizontal'
             Label
                 text: "IP Address"
                 size_hint: .5, 1
                 font_size: app.normal_size
                 markup: True
-            TextInput:
-                id: ip
-                hint_text: '192.168.1.1'
-                text: '192.168.1.1'
-                font_size: app.normal_size
-                multiline: False
-                write_tab: False
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: C('#0f192e')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                CustomInput:
+                    id: ip
+                    hint_text: '192.168.1.1'
+                    text: '192.168.1.1'
+                    padding: [0, 15, 0, 0]
+                    font_size: app.normal_size
+                    multiline: False
+                    write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
+            padding: [0, 6, 0, 6]
             Label
                 text: "User"
                 size_hint: .5, 1
                 font_size: app.normal_size
                 markup: True
-            TextInput:
-                id: user
-                hint_text: 'admin'
-                text: 'admin'
-                font_size: app.normal_size
-                multiline: False
-                write_tab: False
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: C('#0f192e')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                CustomInput:
+                    id: user
+                    hint_text: 'admin'
+                    padding: [0, 12, 0, 0]
+                    font_size: app.normal_size
+                    multiline: False
+                    write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
+            padding: [0, 6, 0, 0]
             Label
                 text: "Password"
                 size_hint: .5, 1
                 font_size: app.normal_size
                 markup: True
-            TextInput:
-                id: passw
-                password: True
-                hint_text: 'Please type your password'
-                font_size: app.normal_size
-                #password_mask: 'a'
-                multiline: False
-                write_tab: False
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: C('#0f192e')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                CustomInput:
+                    id: passw
+                    password: True
+                    hint_text: 'Please type your password'
+                    font_size: app.normal_size
+                    padding: [0, 12, 0, 0]
+                    #password_mask: 'a'
+                    multiline: False
+                    write_tab: False
         BoxLayout:
+            padding: [0, 23, 0, 0]
             orientation: 'horizontal'
             size_hint: 1, .3
             Button:
