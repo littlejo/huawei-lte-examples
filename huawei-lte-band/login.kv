@@ -2,23 +2,59 @@ LoginPage:
     name: "login_page"
     BoxLayout:
         orientation: 'vertical'
-        TextInput:
-            id: ip
-            hint_text: '4G router ip address, default ip: 192.168.1.1'
-            size_hint: 1, .1
-            font_size: 20
-        TextInput:
-            id: passw
-            hint_text: 'password'
-            password: True
-            size_hint: 1, .1
-            font_size: 20
-        Button:
-            text: "go"
+        Label
+            text: "Welcome to LTE"
             size_hint: 1, .3
-            font_size: 50
-            on_release:
-                root.verify_credentials()
+            background_normal: ''
+            background_color: app.band_color_2
+            markup: True
+        BoxLayout:
+            size_hint: 1, .1
+            orientation: 'horizontal'
+            Label
+                text: "IP Address"
+                size_hint: .5, 1
+                markup: True
+            TextInput:
+                id: ip
+                hint_text: 'Default ip: 192.168.1.1'
+                font_size: 20
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Label
+                text: "User"
+                size_hint: .5, 1
+                markup: True
+            TextInput:
+                id: user
+                hint_text: 'Default user: admin'
+                font_size: 20
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Label
+                text: "Password"
+                size_hint: .5, 1
+                markup: True
+            TextInput:
+                id: passw
+                password: True
+                font_size: 20
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .3
+            Button:
+                text: "About"
+                size_hint: .5, 1
+                font_size: 50
+                on_release:
+                    pass
+            Button:
+                text: "Connect"
+                font_size: 50
+                on_release:
+                    root.verify_credentials()
 
 <MonitorPage>:
     name: "monitor"

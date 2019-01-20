@@ -38,12 +38,16 @@ class LoginPage(BoxLayout):
 
     def verify_credentials(self):
         ip = self.ids["ip"].text
+        user = self.ids["user"].text
         password = self.ids["passw"].text
 
         if ip == '':
             ip = default_ip
 
-        huawei_lte.set_login(ip, login, password)
+        if user == '':
+            user = default_user
+
+        huawei_lte.set_login(ip, user, password)
 
         if test_design or huawei_lte.check_connection():
             print("Good password")
