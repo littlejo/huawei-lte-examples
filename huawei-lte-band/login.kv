@@ -7,6 +7,7 @@ LoginPage:
             size_hint: 1, .3
             background_normal: ''
             background_color: app.band_color_2
+            font_size: '50sp'
             markup: True
         BoxLayout:
             size_hint: 1, .1
@@ -14,45 +15,58 @@ LoginPage:
             Label
                 text: "IP Address"
                 size_hint: .5, 1
+                font_size: '25sp'
                 markup: True
             TextInput:
                 id: ip
-                hint_text: 'Default ip: 192.168.1.1'
-                font_size: 20
+                hint_text: '192.168.1.1'
+                text: '192.168.1.1'
+                font_size: '25sp'
+                multiline: False
+                write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
             Label
                 text: "User"
                 size_hint: .5, 1
+                font_size: '25sp'
                 markup: True
             TextInput:
                 id: user
-                hint_text: 'Default user: admin'
-                font_size: 20
+                hint_text: 'admin'
+                text: 'admin'
+                font_size: '25sp'
+                multiline: False
+                write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
             Label
                 text: "Password"
                 size_hint: .5, 1
+                font_size: '25sp'
                 markup: True
             TextInput:
                 id: passw
                 password: True
-                font_size: 20
+                hint_text: 'Please type your password'
+                font_size: '25sp'
+                #password_mask: 'a'
+                multiline: False
+                write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .3
             Button:
                 text: "About"
                 size_hint: .5, 1
-                font_size: 50
+                font_size: '50sp'
                 on_release:
                     pass
             Button:
                 text: "Connect"
-                font_size: 50
+                font_size: '50sp'
                 on_release:
                     root.verify_credentials()
 
