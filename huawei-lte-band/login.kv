@@ -1,8 +1,4 @@
-ScreenManagement:
-    LoginPage:
-    BandPage:
-
-<LoginPage>:
+LoginPage:
     name: "login_page"
     BoxLayout:
         orientation: 'vertical'
@@ -14,17 +10,86 @@ ScreenManagement:
         TextInput:
             id: passw
             hint_text: 'password'
-            password: True # hide password
+            password: True
             size_hint: 1, .1
             font_size: 20
         Button:
             text: "go"
-            on_release: root.verify_credentials()
             size_hint: 1, .3
             font_size: 50
+            on_release:
+                root.verify_credentials()
+
+<MonitorPage>:
+    name: "monitor"
+    title: "Monitoring"
+    rsrq: rsrq
+    rsrp: rsrp
+    sinr: sinr
+    upload_band: upload_band
+    upload_rate: upload_rate
+    download_band: download_band
+    download_rate: download_rate
+    id: popup
+    content: bl
+    BoxLayout:
+        id: bl
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            Label
+                id: rsrq
+                text: "rsrq"
+                font_size: 20
+                markup: True
+            Label
+                id: rsrp
+                text: "rsrp"
+                font_size: 20
+                markup: True
+            Label
+                id: sinr
+                text: "sinr"
+                font_size:20
+                markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    id: upload_band
+                    text: "Upload Band"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: upload_rate
+                    text: "Upload Rate"
+                    font_size: 20
+                    markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    id: download_band
+                    text: "Download Band"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: download_rate
+                    text: "Download Rate"
+                    markup: True
+        BoxLayout:
+            size_hint: 1, .2
+            Button:
+                text:"Refresh"
+                on_release:
+                    root.monitor(20)
+            Button:
+                text:"Custom Bands"
+                on_release:
+                    root.band_popup.open()
 
 <BandPage>:
     name: "user"
+    id: band_popup
+    title: "Customize Upload/Download Bands"
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
@@ -271,7 +336,10 @@ ScreenManagement:
         BoxLayout:
             Button:
                 text: "back"
-                on_release: app.root.current = "login_page"
+                on_release:
+                    band_popup.dismiss()
             Button:
                 text: "OK"
-                on_release: root.configure_router()
+                on_release:
+                    root.configure_router()
+                    band_popup.dismiss()
