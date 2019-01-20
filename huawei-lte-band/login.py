@@ -14,6 +14,9 @@ from GraphicSignalInfo import *
 
 import time
 
+from kivy.core.window import Window
+Window.softinput_mode = 'pan'
+
 def human_readable_size(size, decimal_places):
     for unit in ['bps','Kbps','Mbps','Gbps','Tbps']:
         if size < 1000.0:

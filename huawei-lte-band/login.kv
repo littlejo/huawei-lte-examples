@@ -126,18 +126,18 @@ LoginPage:
                     multiline: False
                     write_tab: False
         BoxLayout:
-            padding: [0, 23, 0, 0]
+            padding: [0, '23sp', 0, 0]
             orientation: 'horizontal'
-            size_hint: 1, .3
+            size_hint: 1, .1
             Button:
                 text: "About"
-                size_hint: .5, 1
-                font_size: '50sp'
+                size_hint: .4, 1
+                font_size: app.large_size
                 on_release:
                     pass
             Button:
                 text: "Connect"
-                font_size: '50sp'
+                font_size: app.large_size
                 on_release:
                     root.verify_credentials()
 
