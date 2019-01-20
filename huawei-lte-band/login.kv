@@ -24,8 +24,11 @@ LoginPage:
     name: "monitor"
     title: "Monitoring"
     rsrq: rsrq
+    rsrq_quality: rsrq_quality
     rsrp: rsrp
+    rsrp_quality: rsrp_quality
     sinr: sinr
+    sinr_quality: sinr_quality
     upload_band: upload_band
     upload_rate: upload_rate
     download_band: download_band
@@ -38,25 +41,80 @@ LoginPage:
         BoxLayout:
             orientation: 'vertical'
             Label
-                id: rsrq
-                text: "rsrq"
-                font_size: 20
-                markup: True
-            Label
-                id: rsrp
-                text: "rsrp"
-                font_size: 20
-                markup: True
-            Label
-                id: sinr
-                text: "sinr"
-                font_size:20
+                text: "Quality Signal"
                 markup: True
             BoxLayout:
                 orientation: 'horizontal'
                 Label
-                    id: upload_band
-                    text: "Upload Band"
+                    text: "RSRQ"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: rsrq
+                    text: "rsrq"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: rsrq_quality
+                    text: "rsrq_quality"
+                    font_size: 20
+                    markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    text: "RSRP"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: rsrp
+                    text: "rsrp"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: rsrp_quality
+                    text: "rsrp_quality"
+                    font_size: 20
+                    markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    text: "RSRP"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: sinr
+                    text: "sinr"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: sinr_quality
+                    text: "rsrp_quality"
+                    font_size: 20
+                    markup: True
+            Label
+                id: 'fixed'
+                text: "Rates"
+                markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    text: "Download"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: download_rate
+                    text: "Download Rate"
+                    font_size: 20
+                    markup: True
+                Label
+                    id: download_band
+                    text: "Download Band"
+                    font_size: 20
+                    markup: True
+            BoxLayout:
+                orientation: 'horizontal'
+                Label
+                    text: "Upload"
                     font_size: 20
                     markup: True
                 Label
@@ -64,16 +122,10 @@ LoginPage:
                     text: "Upload Rate"
                     font_size: 20
                     markup: True
-            BoxLayout:
-                orientation: 'horizontal'
                 Label
-                    id: download_band
-                    text: "Download Band"
+                    id: upload_band
+                    text: "Upload Band"
                     font_size: 20
-                    markup: True
-                Label
-                    id: download_rate
-                    text: "Download Rate"
                     markup: True
         BoxLayout:
             size_hint: 1, .2
