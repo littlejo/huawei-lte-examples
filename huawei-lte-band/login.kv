@@ -106,11 +106,15 @@ LoginPage:
                     text: "Download Rate"
                     font_size: 20
                     markup: True
-                Label
+                Button
                     id: download_band
                     text: "Download Band"
-                    font_size: 20
+                    font_size: 12
                     markup: True
+                    background_normal: ''
+                    background_color: app.band_color_1
+                    on_release:
+                        root.band_popup.open()
             BoxLayout:
                 orientation: 'horizontal'
                 Label
@@ -122,11 +126,15 @@ LoginPage:
                     text: "Upload Rate"
                     font_size: 20
                     markup: True
-                Label
+                Button
                     id: upload_band
                     text: "Upload Band"
-                    font_size: 20
+                    font_size: 12
                     markup: True
+                    background_normal: ''
+                    background_color: app.band_color_1
+                    on_release:
+                        root.band_popup.open()
         BoxLayout:
             size_hint: 1, .2
             Button:
@@ -134,6 +142,7 @@ LoginPage:
                 on_release:
                     root.monitor(20)
             Button:
+                size_hint: .5, 1
                 text:"Custom Bands"
                 on_release:
                     root.band_popup.open()
