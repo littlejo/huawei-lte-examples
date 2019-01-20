@@ -46,7 +46,7 @@ LoginPage:
             markup: True
         BoxLayout:
             size_hint: 1, .1
-            padding: [0, 0, 0, 6]
+            padding: [0, 0, 0, '6sp']
             orientation: 'horizontal'
             Label
                 text: "IP Address"
@@ -64,14 +64,14 @@ LoginPage:
                     id: ip
                     hint_text: '192.168.1.1'
                     text: '192.168.1.1'
-                    padding: [0, 15, 0, 0]
+                    padding: [0, '15sp', 0, 0]
                     font_size: app.normal_size
                     multiline: False
                     write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
-            padding: [0, 6, 0, 6]
+            padding: [0, '6sp', 0, '6sp']
             Label
                 text: "User"
                 size_hint: .5, 1
@@ -87,14 +87,14 @@ LoginPage:
                 CustomInput:
                     id: user
                     hint_text: 'admin'
-                    padding: [0, 12, 0, 0]
+                    padding: [0, '12sp', 0, 0]
                     font_size: app.normal_size
                     multiline: False
                     write_tab: False
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
-            padding: [0, 6, 0, 0]
+            padding: [0, '6sp', 0, 0]
             Label
                 text: "Password"
                 size_hint: .5, 1
@@ -112,7 +112,7 @@ LoginPage:
                     password: True
                     hint_text: 'Please type your password'
                     font_size: app.normal_size
-                    padding: [0, 12, 0, 0]
+                    padding: [0, '12sp', 0, 0]
                     password_mask: 'o'
                     multiline: False
                     write_tab: False
