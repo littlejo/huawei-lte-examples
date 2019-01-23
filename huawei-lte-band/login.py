@@ -129,8 +129,8 @@ class LoginApp(App):
     band_color_1 = [0.1, 0.1, 0.1, 0.1]
     band_color_2 = [0.2, 0.2, 0.5, 0.2]
     bands_dict = bands_ui_dict
-    normal_size = '25sp'
-    large_size = '50sp'
+    normal_size = '17sp'
+    large_size = '35sp'
     def builder(self):
         return Builder.load_file('login.kv')
 
