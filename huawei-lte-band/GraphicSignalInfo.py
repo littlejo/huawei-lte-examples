@@ -10,7 +10,7 @@ class bcolors:
     WARNING = '[color=e9d66b]'
     FAIL = '[color=ff3333]'
 
-conditions_list = ['excellent',  'good',  'mid cell', 'cell edge']
+conditions_list = ['A+',  'A',  'B', 'C']
 colors_list = [bcolors.OKBLUE, bcolors.OKGREEN, bcolors.WARNING, bcolors.FAIL]
 
 stop_color = '[/color]'
@@ -62,7 +62,7 @@ class Graphic_Signal_Info():
         rsrq = self.rsrq
         rsrq_cdt = self.get_quality_rsrq() 
         rsrq_color = self.get_color_rsrq() 
-        return f'{rsrq_color}{rsrq_cdt}{stop_color} (Best {bcolors.OKBLUE}> -10dB{stop_color})'
+        return f'{rsrq_color}{rsrq_cdt}{stop_color}'
 
     def get_rsrp_string(self):
         rsrp = self.rsrp
@@ -74,7 +74,7 @@ class Graphic_Signal_Info():
         rsrp = self.rsrp
         rsrp_cdt = self.get_quality_rsrp() 
         rsrp_color = self.get_color_rsrp() 
-        return f'{rsrp_color}{rsrp_cdt}{stop_color} (Best {bcolors.OKBLUE}> -80dBm{stop_color})'
+        return f'{rsrp_color}{rsrp_cdt}{stop_color}'
 
     def get_sinr_string(self):
         sinr = self.sinr
@@ -86,5 +86,5 @@ class Graphic_Signal_Info():
         sinr = self.sinr
         sinr_cdt = self.get_quality_sinr() 
         sinr_color = self.get_color_sinr() 
-        return f'{sinr_color}{sinr_cdt}{stop_color} (Best {bcolors.OKBLUE}> 20dB{stop_color})'
+        return f'{sinr_color}{sinr_cdt}{stop_color}'
 
