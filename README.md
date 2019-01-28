@@ -1,12 +1,51 @@
-# REQUIREMENTS
+# Huawei LTE Band
+
+## REQUIREMENTS
+
+* python3 (>3.6)
+* pip3
+* git
+* kivy
+
+## INSTALLATION
+
+### Installation of dependencies
+
+```sh
+git clone git@github.com:littlejo/huawei-lte-examples.git
+```
+
+```sh
+cd huawei-lte-examples/huawei-lte-band
+```
+
+```sh
+pip3 install -r requirements.txt
+```
+
+#### Installation of kivy
+
+See https://kivy.org/doc/stable/installation/installation.html
+
+### Launch
+
+```sh
+python3 main.py
+```
+
+![Kivy program](https://raw.githubusercontent.com/littlejo/huawei-lte-examples/master/huawei-lte-band/huawei-lte-band.gif)
+
+# Huawei LTE Monitoring
+
+## REQUIREMENTS
 
 * python3 (>3.6)
 * pip3
 * git
 
-# INSTALLATION
+## INSTALLATION
 
-## Installation of dependencies
+### Installation of dependencies
 
 ```sh
 git clone git@github.com:littlejo/huawei-lte-examples.git
@@ -20,11 +59,11 @@ cd huawei-lte-examples/huawei-lte-monitoring
 pip3 install -r requirements.txt
 ```
 
-## Configuration
+### Configuration
 
 Modify password value and ip value of the 4G router in login.py
 
-## Launch
+### Launch
 
 ```sh
 python3 display_traffic_signal.py
