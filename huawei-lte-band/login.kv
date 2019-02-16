@@ -157,71 +157,77 @@ LoginPage:
             BoxLayout:
                 orientation: 'vertical'
                 BoxLayout:
-                    orientation: 'vertical'
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        Label
-                            text: "RSRQ"
-                            font_size: app.normal_size
-                            markup: True
-                            size_hint: .3, 1
-                        Label
-                            id: rsrq
-                            text: "rsrq"
-                            font_size: app.normal_size
-                            markup: True
+                    orientation: 'horizontal'
+                    Label
+                        text: "RSRQ"
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
                     ProgressBar:
                         id: rsrq_quality_pr
                         value: 10
+                        size_hint: .6, 1
+                        height: '48dp'
                     Label
-                        id: rsrq_quality
-                        text: "rsrp_quality"
+                        id: rsrq
+                        text: "rsrq"
                         font_size: app.normal_size
                         markup: True
+                        size_hint: .3, 1
+                    Label
+                        id: rsrq_quality
+                        text: ""
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
                 BoxLayout:
-                    orientation: 'vertical'
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        Label
-                            text: "RSRP"
-                            font_size: app.normal_size
-                            markup: True
-                            size_hint: .3, 1
-                        Label
-                            id: rsrp
-                            text: "rsrp"
-                            font_size: app.normal_size
-                            markup: True
+                    orientation: 'horizontal'
+                    Label
+                        text: "RSRP"
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
                     ProgressBar:
                         id: rsrp_quality_pr
                         value: 10
+                        size_hint: .6, 1
+                        height: '48dp'
                     Label
-                        id: rsrp_quality
-                        text: "rsrp_quality"
+                        id: rsrp
+                        text: "rsrp"
                         font_size: app.normal_size
                         markup: True
+                        size_hint: .3, 1
+                    Label
+                        id: rsrp_quality
+                        text: ""
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
                 BoxLayout:
-                    orientation: 'vertical'
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        Label
-                            text: "SINR"
-                            font_size: app.normal_size
-                            markup: True
-                            size_hint: .3, 1
-                        Label
-                            id: sinr
-                            text: "sinr"
-                            font_size: app.normal_size
-                            markup: True
+                    orientation: 'horizontal'
+                    Label
+                        text: "SINR"
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
                     ProgressBar:
                         id: sinr_quality_pr
                         value: 10
+                        size_hint: .6, 1
+                        height: '48dp'
                     Label
-                        id: sinr_quality
-                        text: "rsrp_quality"
+                        id: sinr
+                        text: "sinr"
                         font_size: app.normal_size
                         markup: True
+                        size_hint: .3, 1
+                    Label
+                        id: sinr_quality
+                        text: ""
+                        font_size: app.normal_size
+                        markup: True
+                        size_hint: .1, 1
             BoxLayout:
                 orientation: 'vertical'
                 BoxLayout:
