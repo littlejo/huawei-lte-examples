@@ -15,7 +15,7 @@ import crypto
 from math_bands import *
 from default_value import *
 from huawei_lte_lib import *
-from GraphicSignalInfo import *
+from design import *
 
 import time
 

@@ -1,3 +1,5 @@
+from math_bands import *
+
 lte_quality_signal_dict = {
                    'rsrp': (-80, -90, -100),
                    'rsrq': (-10, -15, -20),
