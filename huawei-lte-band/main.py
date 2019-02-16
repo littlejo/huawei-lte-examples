@@ -6,6 +6,7 @@ from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.clock import Clock
+from kivy.uix.progressbar import ProgressBar
 
 from math_bands import *
 from default_value import *
@@ -82,10 +83,13 @@ class MonitorPage(Popup):
 
         self.rsrq.text = graphic_signal.get_rsrq_string()
         self.rsrq_quality.text = graphic_signal.get_quality_rsrq_string()
+        self.rsrq_quality_pr.value = info['rsrq'] * 5 + 115
         self.rsrp.text = graphic_signal.get_rsrp_string()
         self.rsrp_quality.text = graphic_signal.get_quality_rsrp_string()
+        self.rsrp_quality_pr.value = (info['rsrp'] + 140) / 1.84
         self.sinr.text = graphic_signal.get_sinr_string()
         self.sinr_quality.text = graphic_signal.get_quality_sinr_string()
+        self.sinr_quality_pr.value = (info['sinr'] + 10) * 2.5
         self.upload_rate.text = human_readable_size(info['upload_rate'], 1)
         self.upload_band.text = bands_ui_dict[info['upload_band']]
         self.download_rate.text = human_readable_size(info['download_rate'], 1)
