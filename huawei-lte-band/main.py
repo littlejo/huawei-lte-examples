@@ -80,6 +80,8 @@ class MonitorPage(Popup):
             info = huawei_lte.get_all_monitor_information()
             print(info)
             self.title = "Monitoring %s" %str(self.score)
+            self.title_color =  running_color_list
+            self.separator_color = running_color_list
             graphic_signal = Graphic_Signal_Info(info['rsrq'], info['rsrp'], info['sinr'])
 
             self.rsrq.text = graphic_signal.get_rsrq_string()
@@ -96,6 +98,9 @@ class MonitorPage(Popup):
             self.download_rate.text = human_readable_size(info['download_rate'], 1)
             self.download_band.text = convert_bands_list2str(info['download_band'])
             if self.score >= self.iterations:
+                self.title = "Stop"
+                self.title_color = stop_color_list
+                self.separator_color = stop_color_list
                 self.event.cancel()
 
 class BandPage(Popup):
