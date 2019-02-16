@@ -8,6 +8,7 @@ from kivy.uix.popup import Popup
 from kivy.clock import Clock
 from kivy.uix.progressbar import ProgressBar
 from kivy.config import Config
+from kivy.core.window import Window
 
 import crypto
 
@@ -18,23 +19,7 @@ from GraphicSignalInfo import *
 
 import time
 
-from kivy.core.window import Window
 Window.softinput_mode = 'pan'
-
-def human_readable_size(size, decimal_places):
-    for unit in ['bps','Kbps','Mbps','Gbps','Tbps']:
-        if size < 1000.0:
-            if unit == 'bps':
-                decimal_places = 0
-            break
-        size /= 1000.0
-    return f"{size:.{decimal_places}f}{unit}"
-
-def convert_bands_list2str(bands_list):
-    res_str = ''
-    for band in bands_list:
-        res_str += bands_ui_dict[band] + '\n'
-    return res_str
 
 
 class LoginPage(BoxLayout):
