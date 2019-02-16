@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.clock import Clock
 from kivy.uix.progressbar import ProgressBar
+from kivy.config import Config
 
 from math_bands import *
 from default_value import *
@@ -40,20 +41,32 @@ class LoginPage(BoxLayout):
         self.monitor_popup = MonitorPage()
         self.band_popup = BandPage()
 
+    def get_login(self, attribute):
+        if Config.has_section(default_section):
+            return Config.get(default_section, attribute)
+        else:
+            return default_login_dict[attribute]
+
     def verify_credentials(self):
         ip = self.ids["ip"].text
         user = self.ids["user"].text
         password = self.ids["passw"].text
 
         if ip == '':
-            ip = default_ip
+            ip = default_login_dict['ip']
 
         if user == '':
-            user = default_user
+            user = default_login_dict['user']
 
         huawei_lte.set_login(ip, user, password)
 
         if test_design or huawei_lte.check_connection():
+            if not Config.has_section(default_section):
+                Config.add_section(default_section)
+            Config.set(default_section, 'user', user)
+            Config.set(default_section, 'password', password)
+            Config.set(default_section, 'ip', ip)
+            Config.write()
             print("Good password")
             self.monitor_popup.open()
             self.monitor_popup.monitor()
