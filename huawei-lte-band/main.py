@@ -9,6 +9,8 @@ from kivy.clock import Clock
 from kivy.uix.progressbar import ProgressBar
 from kivy.config import Config
 
+import crypto
+
 from math_bands import *
 from default_value import *
 from huawei_lte_lib import *
@@ -47,6 +49,14 @@ class LoginPage(BoxLayout):
         else:
             return default_login_dict[attribute]
 
+    def get_password(self):
+        attribute = 'password'
+        if Config.has_section(default_section):
+            encoded_passw = Config.get(default_section, attribute)
+            return crypto.decode_password(encoded_passw)
+        else:
+            return default_login_dict[attribute]
+
     def verify_credentials(self):
         ip = self.ids["ip"].text
         user = self.ids["user"].text
@@ -64,7 +74,7 @@ class LoginPage(BoxLayout):
             if not Config.has_section(default_section):
                 Config.add_section(default_section)
             Config.set(default_section, 'user', user)
-            Config.set(default_section, 'password', password)
+            Config.set(default_section, 'password', crypto.encode_password(password))
             Config.set(default_section, 'ip', ip)
             Config.write()
             print("Good password")
