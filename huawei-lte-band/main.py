@@ -77,7 +77,6 @@ class LoginPage(BoxLayout):
         check_connection = huawei_lte.check_connection()
 
         if test_design or check_connection['up']:
-            print("Good password")
             self.ids['passw'].background_color = 1, 1, 1, 1
             self.ids['ip'].background_color = 1, 1, 1, 1
             self.config_app.write_config()
@@ -85,11 +84,12 @@ class LoginPage(BoxLayout):
             self.monitor_popup.monitor()
         elif check_connection['cause'] == 'password':
             self.ids['passw'].background_color = 1, .3, .4, .85
-            self.ids['ip'].background_color = 1, 1, 1, 1
             self.ids['passw'].text = ''
             self.ids['passw'].hint_text = 'Bad password'
+            self.ids['ip'].background_color = 1, 1, 1, 1
         else:
             self.ids['ip'].background_color = 1, .3, .4, .85
+            self.ids['ip'].hint_text = 'Bad IP address'
             self.ids['passw'].background_color = 1, 1, 1, 1
 
 class AboutPage(Popup):
