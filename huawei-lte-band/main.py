@@ -10,6 +10,7 @@ from kivy.uix.progressbar import ProgressBar
 from kivy.config import Config
 from kivy.core.window import Window
 
+import webbrowser
 import crypto
 
 from math_bands import *
@@ -26,7 +27,7 @@ class LoginPage(BoxLayout):
     def __init__(self,**kwargs):
         super(LoginPage,self).__init__(**kwargs)
         self.monitor_popup = MonitorPage()
-        self.band_popup = BandPage()
+        self.about_popup = AboutPage()
 
     def get_login(self, attribute):
         if Config.has_section(default_section):
@@ -41,6 +42,9 @@ class LoginPage(BoxLayout):
             return crypto.decode_password(encoded_passw)
         else:
             return default_login_dict[attribute]
+
+    def display_about(self):
+        self.about_popup.open()
 
     def verify_credentials(self):
         ip = self.ids["ip"].text
@@ -67,6 +71,13 @@ class LoginPage(BoxLayout):
             self.monitor_popup.monitor()
         else:
             print("Bad password")
+
+class AboutPage(Popup):
+    licence_url = 'https://github.com/littlejo/huawei-lte-examples/blob/master/LICENSE'
+    github_url = 'https://github.com/littlejo/huawei-lte-examples/'
+
+    def open_url(self, url):
+        webbrowser.open(url)
 
 class MonitorPage(Popup):
     def __init__(self,**kwargs):
@@ -112,7 +123,6 @@ class MonitorPage(Popup):
                 self.event.cancel()
 
 class BandPage(Popup):
-
     def configure_router(self):
         down_bands = self.get_bands()
         up_bands = self.get_bands('_ul')
