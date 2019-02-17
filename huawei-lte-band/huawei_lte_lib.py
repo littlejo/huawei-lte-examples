@@ -2,6 +2,7 @@ from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
 from huawei_lte_api.exceptions import ResponseErrorLoginCsfrException
 from huawei_lte_api.exceptions import LoginErrorUsernamePasswordWrongException
+import requests
 
 from math_bands import convert_bands_hex2list
 
@@ -26,8 +27,10 @@ class HuaweiLte:
             self.init_connection()
             self.close_connection()
         except LoginErrorUsernamePasswordWrongException:
-            return False
-        return True
+            return {'up': False, 'cause': 'password'}
+        except requests.exceptions.ConnectionError:
+            return {'up': False, 'cause': 'network'}
+        return {'up': True}
 
     def init_net_mode(self):
         self.net_mode = self.client.net.net_mode()

@@ -74,16 +74,19 @@ class LoginPage(BoxLayout):
 
         huawei_lte.set_login(ip, user, password)
         self.config_app.set_login(ip, user, password)
+        check_connection = huawei_lte.check_connection()
 
-        if test_design or huawei_lte.check_connection():
+        if test_design or check_connection['up']:
             print("Good password")
             self.config_app.write_config()
             self.monitor_popup.open()
             self.monitor_popup.monitor()
-        else:
+        elif check_connection['cause'] == 'password':
             self.ids['passw'].background_color = 1, .3, .4, .85
             self.ids['passw'].text = ''
             self.ids['passw'].hint_text = 'Bad password'
+        else:
+            self.ids['ip'].background_color = 1, .3, .4, .85
 
 class AboutPage(Popup):
     licence_url = 'https://github.com/littlejo/huawei-lte-examples/blob/master/LICENSE'
