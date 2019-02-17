@@ -43,6 +43,14 @@ class LoginPage(BoxLayout):
         else:
             return default_login_dict[attribute]
 
+    def write_config(self, user, password, ip):
+        if not Config.has_section(default_section):
+            Config.add_section(default_section)
+        Config.set(default_section, 'user', user)
+        Config.set(default_section, 'password', crypto.encode_password(password))
+        Config.set(default_section, 'ip', ip)
+        Config.write()
+
     def display_about(self):
         self.about_popup.open()
 
@@ -60,13 +68,8 @@ class LoginPage(BoxLayout):
         huawei_lte.set_login(ip, user, password)
 
         if test_design or huawei_lte.check_connection():
-            if not Config.has_section(default_section):
-                Config.add_section(default_section)
-            Config.set(default_section, 'user', user)
-            Config.set(default_section, 'password', crypto.encode_password(password))
-            Config.set(default_section, 'ip', ip)
-            Config.write()
             print("Good password")
+            self.write_config(user, password, ip)
             self.monitor_popup.open()
             self.monitor_popup.monitor()
         else:
