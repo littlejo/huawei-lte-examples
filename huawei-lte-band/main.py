@@ -22,12 +22,11 @@ import time
 
 Window.softinput_mode = 'pan'
 
-
-class LoginPage(BoxLayout):
-    def __init__(self,**kwargs):
-        super(LoginPage,self).__init__(**kwargs)
-        self.monitor_popup = MonitorPage()
-        self.about_popup = AboutPage()
+class ConfigApp:
+    def set_login(self, ip, user, password):
+        self.user = user
+        self.password = password
+        self.ip = ip
 
     def get_login(self, attribute):
         if Config.has_section(default_section):
@@ -43,13 +42,21 @@ class LoginPage(BoxLayout):
         else:
             return default_login_dict[attribute]
 
-    def write_config(self, user, password, ip):
+    def write_config(self):
         if not Config.has_section(default_section):
             Config.add_section(default_section)
-        Config.set(default_section, 'user', user)
-        Config.set(default_section, 'password', crypto.encode_password(password))
-        Config.set(default_section, 'ip', ip)
+        Config.set(default_section, 'user', self.user)
+        Config.set(default_section, 'password', crypto.encode_password(self.password))
+        Config.set(default_section, 'ip', self.ip)
         Config.write()
+
+
+class LoginPage(BoxLayout):
+    def __init__(self,**kwargs):
+        super(LoginPage,self).__init__(**kwargs)
+        self.monitor_popup = MonitorPage()
+        self.about_popup = AboutPage()
+        self.config_app = ConfigApp()
 
     def display_about(self):
         self.about_popup.open()
@@ -66,10 +73,11 @@ class LoginPage(BoxLayout):
             user = default_login_dict['user']
 
         huawei_lte.set_login(ip, user, password)
+        self.config_app.set_login(ip, user, password)
 
         if test_design or huawei_lte.check_connection():
             print("Good password")
-            self.write_config(user, password, ip)
+            self.config_app.write_config()
             self.monitor_popup.open()
             self.monitor_popup.monitor()
         else:

@@ -21,7 +21,7 @@ LoginPage:
                 markup: True
             TextInput:
                 id: user
-                hint_text: root.get_login('user')
+                hint_text: root.config_app.get_login('user')
                 hint_text_color:  [0, 0, 0, 0.7]
                 size_hint: 1, .4
                 multiline: False
@@ -42,7 +42,7 @@ LoginPage:
                 password: True
                 size_hint: 1, .4
                 hint_text: 'Please type your password'
-                text: root.get_password()
+                text: root.config_app.get_password()
                 password_mask: 'o'
                 multiline: False
                 write_tab: False
@@ -60,8 +60,8 @@ LoginPage:
             TextInput:
                 id: ip
                 size_hint: 1, .4
-                hint_text: root.get_login('ip')
-                text: root.get_login('ip')
+                hint_text: root.config_app.get_login('ip')
+                text: root.config_app.get_login('ip')
                 multiline: False
                 write_tab: False
         BoxLayout:
