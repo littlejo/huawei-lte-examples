@@ -1,0 +1,24 @@
+# Version 0.1
+
+create 3 views:
+* login to check connection
+* monitoring to monitor 4G router
+* bands customing to modify bands.
+
+# Version 0.2
+
+Improvement:
+
+* login view:
+** change look
+** interchange place of user and ip address
+** signal user if password or ip address incorrect
+** remember of login (a simple crypto of password)
+
+* monitoring view:
+** Add a bar on each signal quality
+** signal user if monitor stops
+
+Add a new view:
+* About
+
