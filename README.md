@@ -37,7 +37,7 @@ python3 main.py
 
 ### Android installation
 
-* Download ![Android installation](https://github.com/littlejo/huawei-lte-examples/raw/master/huawei-lte-band/apk/lte-0.2.apk) on your Android device and run it.
+* Download ![Android installation APK file](https://github.com/littlejo/huawei-lte-examples/raw/master/huawei-lte-band/apk/lte-0.2.apk) on your Android device and run it.
 
 # Huawei LTE Monitoring
 
