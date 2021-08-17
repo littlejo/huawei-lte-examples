@@ -1,5 +1,5 @@
 def get_int(value):
-    return int(value.split('d')[0])
+    return float(value.split('d')[0])
 
 class SignalInfo():
     def __init__(self, client):
