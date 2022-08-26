@@ -1,6 +1,6 @@
 from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
-from huawei_lte_api.exceptions import ResponseErrorLoginCsfrException
+from huawei_lte_api.exceptions import ResponseErrorLoginCsrfException
 from huawei_lte_api.exceptions import LoginErrorUsernamePasswordWrongException
 import requests
 
