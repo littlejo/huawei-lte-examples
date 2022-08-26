@@ -1,1 +1,2 @@
 huawei-lte-api
+pycryptodome
